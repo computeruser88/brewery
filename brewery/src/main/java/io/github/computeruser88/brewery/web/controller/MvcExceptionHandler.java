@@ -2,6 +2,7 @@ package io.github.computeruser88.brewery.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -24,5 +25,10 @@ public class MvcExceptionHandler {
         });
 
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BindException.class)
+    public ResponseEntity<List> handleBindException(BindException ex) {
+        return new ResponseEntity(ex.getAllErrors(), HttpStatus.BAD_REQUEST);
     }
 }
