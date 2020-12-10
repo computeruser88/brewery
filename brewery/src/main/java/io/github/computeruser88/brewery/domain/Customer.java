@@ -1,25 +1,22 @@
-package io.github.computeruser88.brewery.web.model;
+package io.github.computeruser88.brewery.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
+/**
+ * Created by Jan Balangue on 12/9/20.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CustomerDto {
+public class Customer {
 
     private UUID id;
 
-    @NotNull
-    @NotBlank
-    @Size(min = 3, max = 100)
     private String customerName;
-
 }
